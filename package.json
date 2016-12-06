@@ -1,0 +1,14 @@
+{
+  "name": "tinynote",
+  "version": "1.0.0",
+  "description": "小注释生成api文档",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Weijie Zhu <443984744@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.1"
+  }
+}
