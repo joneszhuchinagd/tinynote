@@ -7,11 +7,12 @@ const glob = require("glob");
 const path = require('path');
 const fs = require('fs');
 const utils = require('./utils');
-
+const fsex = require('fs-extra');
 
 const component = {
   Line: require('./component/line'),
-  Table: require('./component/table')
+  Table: require('./component/table'),
+  Code: require('./component/code')
 }
 
 const template = [
@@ -23,24 +24,29 @@ const template = [
   {
     type: 'Line',
     name: 'url',
-    template: '* 地址 ${text}'
+    template: '* 地址 : ${text}'
   },
   {
     type: 'Line',
     name: 'method',
-    template: '* 方法 ${text}'
+    template: '* 方法 : ${text}'
   },
   {
     type: 'Table',
     name: 'params',
-    title: '* 参数:',
+    title: '* 参数 :',
     th: ['参数名', '类型', '必填', '说明']
   },
   {
     type: 'Table',
     name: 'code',
-    title: '* 返回码:',
-    th: ['错误码', '说明']
+    title: '* 返回码 :',
+    th: ['返回码', '说明']
+  },
+  {
+    type: 'Code',
+    name: 'return',
+    title: '* 返回值 :'
   }
 ]
 
@@ -115,5 +121,6 @@ module.exports = function (config) {
   const notes = extractNote(files);
   data += generateList(notes);
   data += generateApi(notes, template);
+  fsex.mkdirsSync(path.resolve(process.cwd(), path.dirname(config.dist)));
   fs.writeFileSync(path.resolve(config.dist), data);
 }
