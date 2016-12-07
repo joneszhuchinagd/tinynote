@@ -1,8 +1,11 @@
 {
   "name": "tinynote",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "小注释生成api文档",
   "main": "bin/tinynote.js",
+  "bin": {
+    "tinynote": "bin/tinynote.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +25,5 @@
     "doc",
     "router",
     "generate"
-  ],
+  ]
 }

@@ -14,7 +14,6 @@ npm install tinynote -g
 
 ```
 tinynote -source 'text/temp/*.js' -dist 'test/echo/api.md'
-
 ```
 
 * source 注释文件的源路径，支持glob
