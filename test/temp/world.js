@@ -6,7 +6,7 @@
 
 
 /*
- * title : worldApi1
+ * title : 路由5
  * url : /api/test/{api}
  * method : get
  * params : id1 path false 测试id1
@@ -31,7 +31,7 @@ function world() {
 }
 
 /*
- * title : worldApi2
+ * title : 路由6
  * url : /api/test2/{api}
  * method : get
  * params : id path false 测试id2
@@ -51,7 +51,7 @@ function world() {
 
 
 /*
- * title : worldApi3
+ * title : 路由7
  * url : /api/test2/{api}
  * method : get
  * params : id path false 测试id2

@@ -15,41 +15,6 @@ const component = {
   Code: require('./component/code')
 }
 
-const template = [
-  {
-    type: 'Line',
-    name: 'title',
-    template: '## ${text}'
-  },
-  {
-    type: 'Line',
-    name: 'url',
-    template: '* 地址 : ${text}'
-  },
-  {
-    type: 'Line',
-    name: 'method',
-    template: '* 方法 : ${text}'
-  },
-  {
-    type: 'Table',
-    name: 'params',
-    title: '* 参数 :',
-    th: ['参数名', '类型', '必填', '说明']
-  },
-  {
-    type: 'Table',
-    name: 'code',
-    title: '* 返回码 :',
-    th: ['返回码', '说明']
-  },
-  {
-    type: 'Code',
-    name: 'return',
-    title: '* 返回值 :'
-  }
-]
-
 /*
  * 读取文件内容
  * */
@@ -103,8 +68,9 @@ function generateList(notes) {
  * 生成Api内容
  * */
 function generateApi(notes, template) {
-  let api = '\n';
+  let api = '';
   for (let note of notes) {
+    api += '\n'; //每一段API都需要换行
     for (let t of template) {
       api += component[t.type].parse(note, t);
     }
@@ -120,7 +86,7 @@ module.exports = function (config) {
   const files = readFiles(sources);
   const notes = extractNote(files);
   data += generateList(notes);
-  data += generateApi(notes, template);
+  data += generateApi(notes, config.template);
   fsex.mkdirsSync(path.resolve(process.cwd(), path.dirname(config.dist)));
   fs.writeFileSync(path.resolve(config.dist), data);
 }

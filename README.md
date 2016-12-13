@@ -10,7 +10,7 @@
 npm install tinynote -g
 ```
 
-## Usage
+## Cmd
 
 ```
 tinynote -source 'text/temp/*.js' -dist 'test/echo/api.md'
@@ -19,12 +19,62 @@ tinynote -source 'text/temp/*.js' -dist 'test/echo/api.md'
 * source 注释文件的源路径，支持glob
 * dist 生成路径
 
+## Configuration
+也支持在package.json里面进行配置
+```
+"tinynote": {
+    "dist": "test/echo/api.md",
+    "source": "test/temp/*.js",
+    "template": [
+      {
+        "type": "Line",
+        "name": "title",
+        "template": "## ${text}"
+      },
+      {
+        "type": "Line",
+        "name": "url",
+        "template": "#### 地址 : ${text}"
+      },
+      {
+        "type": "Line",
+        "name": "method",
+        "template": "#### 方法 : ${text}"
+      },
+      {
+        "type": "Table",
+        "name": "params",
+        "title": "#### 参数 :",
+        "th": [
+          "参数名",
+          "类型",
+          "必填",
+          "说明"
+        ]
+      },
+      {
+        "type": "Table",
+        "name": "code",
+        "title": "#### 返回码 :",
+        "th": [
+          "返回码",
+          "说明"
+        ]
+      },
+      {
+        "type": "Code",
+        "name": "return",
+        "title": "#### 返回值 :"
+      }
+    ]
+  }
+```
 
-## Demo
+## Usage
 
 ```
 /*
- * title : API
+ * title : 路由1
  * url : /api/test
  * method : get
  * params : name path false 用户名
@@ -46,30 +96,28 @@ tinynote -source 'text/temp/*.js' -dist 'test/echo/api.md'
 
 |方法|地址|
 |------|------|
-| [API](#API) | /api/test |
+| [路由1](#路由1) | /api/test |
 
-
-## API
-* 地址 : /api/test
-* 方法 : get
-* 参数 :
+## 路由1
+#### 地址 : /api/test
+#### 方法 : get
+#### 参数 :
 
 |参数名|类型|必填|说明|
 |------|------|------|------|
 | name | path | false | 用户名 |
 | sex | path | false | 性别 |
 
-* 返回码 :
+#### 返回码 :
 
 |返回码|说明|
 |------|------|
 | 9000 | 系统错误 |
 | 8000 | 授权错误 |
 
-* 返回值 :
+#### 返回值 :
 ```
  {
    hello:'world',
  }
 ```
-

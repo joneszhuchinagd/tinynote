@@ -6,7 +6,7 @@
 
 
 /*
- * title : API
+ * title : 路由1
  * url : /api/test
  * method : get
  * params : name path false 用户名
@@ -32,7 +32,7 @@ function hello() {
 
 
 /*
- * title : helloApi2
+ * title : 路由2
  * url : /api/test2/{api}
  * method : get
  * params : id path false 测试id2
@@ -48,3 +48,14 @@ function hello() {
   // hello
   return 'hello';
 }
+
+/**
+ * title : 路由3
+ * url : /api/test2/{api}
+ */
+
+/**
+ * title : 路由4
+ * url : /api/test2/{api}
+ * method : get
+ * */
