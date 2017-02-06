@@ -15,7 +15,11 @@ npm install tinynote -g
 ## Cmd
 
 ```
+// mac系统
 tinynote -source 'text/temp/*.js' -dist 'test/echo/api.md'
+
+// windows系统
+tinynote -source text/temp/*.js -dist test/echo/api.md
 ```
 
 * source 注释文件的源路径，支持glob
