@@ -1,6 +1,6 @@
 {
   "name": "tinynote",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "小注释生成api文档",
   "main": "bin/tinynote.js",
   "bin": {
@@ -29,8 +29,7 @@
   "tinynote": {
     "dist": "test/echo/api.md",
     "source": "test/temp/*.js",
-    "template": [
-      {
+    "template": [{
         "type": "Line",
         "name": "title",
         "template": "## ${text}"

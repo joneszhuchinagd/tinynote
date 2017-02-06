@@ -22,7 +22,7 @@ function readFiles(paths) {
   const files = {};
   for (let filepath of paths) {
     const parsePath = path.parse(filepath);
-    files[parsePath.name] = fs.readFileSync(filepath, {encoding: 'utf8'});
+    files[parsePath.name] = fs.readFileSync(filepath, { encoding: 'utf8' });
   }
   return files;
 }
@@ -81,12 +81,12 @@ function generateApi(notes, template) {
 
 module.exports = function (config) {
   let data = '';
-  const sources = glob.sync(config.source, {nodir: true});
+  const sources = glob.sync(path.resolve(process.cwd(), config.source), { nodir: true });
   if (sources.length === 0) return console.log(`'${config.source}'目录下未发现有效文件。`);
   const files = readFiles(sources);
   const notes = extractNote(files);
   data += generateList(notes);
   data += generateApi(notes, config.template);
   fsex.mkdirsSync(path.resolve(process.cwd(), path.dirname(config.dist)));
-  fs.writeFileSync(path.resolve(config.dist), data);
+  fs.writeFileSync(path.resolve(process.cwd(), config.dist), data);
 }
